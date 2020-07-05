@@ -1,0 +1,69 @@
+{
+  "name": "your_project_name",
+  "version": "0.0.1",
+  "description": "your_project_name",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JR93/joy-template-lib.git"
+  },
+  "license": "MIT",
+  "author": "JR93 <gjr_china@163.com>",
+  "main": "dist/index.min.js",
+  "module": "dist/index.esm.min.js",
+  "scripts": {
+    "lint": "eslint",
+    "build": "joy-bundler build",
+    "test": "jest",
+    "release": "cross-env standard-version && git push --follow-tags origin master && npm publish"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@yy/eslint-config-vue": "^1.6.0",
+    "joy-bundler": "^0.1.6",
+    "@yy/babel-preset-joy": "^1.0.1",
+    "cross-env": "^6.0.3",
+    "eslint": "^5.16.0",
+    "husky": "^4.2.5",
+    "jest": "^24.0.0",
+    "standard-version": "^8.0.0"
+  },
+  "babel": {
+    "presets": [
+      "@yy/joy"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "@yy/vue"
+    ],
+    "globals": {}
+  },
+  "eslintIgnore": [
+    "/dist"
+  ],
+  "engines": {
+    "node": ">= 10"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "subject-case": [
+        0,
+        "always",
+        "lowerCase"
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "cross-env-shell commitlint -e $GIT_PARAMS"
+    }
+  }
+}
